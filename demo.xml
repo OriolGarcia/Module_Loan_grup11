@@ -1,25 +1,43 @@
 <openerp>
     <data>
-        <!--  -->
-        <!--   <record id="object0" model="loan.loan"> -->
-        <!--     <field name="name">Object 0</field> -->
-        <!--   </record> -->
-        <!--  -->
-        <!--   <record id="object1" model="loan.loan"> -->
-        <!--     <field name="name">Object 1</field> -->
-        <!--   </record> -->
-        <!--  -->
-        <!--   <record id="object2" model="loan.loan"> -->
-        <!--     <field name="name">Object 2</field> -->
-        <!--   </record> -->
-        <!--  -->
-        <!--   <record id="object3" model="loan.loan"> -->
-        <!--     <field name="name">Object 3</field> -->
-        <!--   </record> -->
-        <!--  -->
-        <!--   <record id="object4" model="loan.loan"> -->
-        <!--     <field name="name">Object 4</field> -->
-        <!--   </record> -->
-        <!--  -->
+       	    <field name="name">Buttons</field>
+	    <field name="model">button.demo</field>
+	    <field name="type">form</field>
+	    <field name="arch" type="xml">
+	        <form string="Button record">
+		    <!--The header tag is built to add buttons within. This puts them at the top -->
+		    <header>
+			<!--The oe_highlight class gives the button a red color when it is saved.
+			It is usually used to indicate the expected behaviour. -->
+		       
+				<button string="Calcular quotes" type="object" name="button_calculate"/>
+			</header>
+		    <group>
+				<field name="capital"/>
+				<field name="interes nominal"/>
+				<field name="numero quotes"/>
+		    </group>
+		</form>
+	    </field>
+	</record>
+
+	<!--The action -->
+        <record model="ir.actions.act_window" id="buttons_calculate">
+            <field name="name">Create new record</field>
+            <field name="res_model">button.demo</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+            <field name='view_id' ref='view_buttons_form'/>
+        </record>
+
+
+
+        <!-- top level menu: no parent -->
+        <menuitem id="main_button_menu" name="Buttons demo"/>
+        <menuitem id="button_menu" name="Buttons demo"
+                  parent="main_button_menu"/>
+        <menuitem id="menu_detail_logging"
+                action="buttons_example_action" parent="button_menu"
+                sequence="20"/>
     </data>
 </openerp>
