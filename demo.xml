@@ -17,6 +17,9 @@
 				<field name="interes nominal"/>
 				<field name="numero quotes"/>
 		    </group>
+		    
+		      <field name="Preu quota" readonly="1" />
+
 		</form>
 	    </field>
 	</record>
