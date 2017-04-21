@@ -1,46 +1,48 @@
 <openerp>
     <data>
-       	    <field name="name">Buttons</field>
-	    <field name="model">button.demo</field>
-	    <field name="type">form</field>
-	    <field name="arch" type="xml">
-	        <form string="Button record">
-		    <!--The header tag is built to add buttons within. This puts them at the top -->
-		    <header>
-			<!--The oe_highlight class gives the button a red color when it is saved.
-			It is usually used to indicate the expected behaviour. -->
-		       
-				<button string="Calcular quotes" type="object" name="button_calculate"/>
-			</header>
-		    <group>
-				<field name="capital"/>
-				<field name="interes nominal"/>
-				<field name="numero quotes"/>
-		    </group>
-		    
-		      <field name="Preu quota" readonly="1" />
+		<record model="ir.ui.view" id="view_loan_form">
+			<field name="name">Loan</field>
+			<field name="model">loan.loan</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Button record">
+				<!--The header tag is built to add buttons within. This puts them at the top -->
+					<header>
+					<!--The oe_highlight class gives the button a red color when it is saved.
+					It is usually used to indicate the expected behaviour. -->
+					   
+						<button string="Calcular quotes" type="object" name="calcula"/>
+					</header>
+					<group>
+						<field name="name"/>
+						<field name="description"/>
+						<field name="capital"/>
+						<field name="interesnominal"/>
+						<field name="numquotes"/>
+					</group>
+					
+					  <field name="quota" readonly="1" />
 
-		</form>
-	    </field>
-	</record>
+				</form>
+			</field>
+		</record>
 
 	<!--The action -->
-        <record model="ir.actions.act_window" id="buttons_calculate">
-            <field name="name">Create new record</field>
-            <field name="res_model">button.demo</field>
+        <record model="ir.actions.act_window" id="calcula">
+            <field name="name">Calcular Factura</field>
+            <field name="res_model">loan.loan</field>
             <field name="view_type">form</field>
             <field name="view_mode">form,tree</field>
-            <field name='view_id' ref='view_buttons_form'/>
+            <field name='view_id' ref='view_loan_form'/>
         </record>
 
 
-
-        <!-- top level menu: no parent -->
-        <menuitem id="main_button_menu" name="Buttons demo"/>
-        <menuitem id="button_menu" name="Buttons demo"
-                  parent="main_button_menu"/>
-        <menuitem id="menu_detail_logging"
-                action="buttons_example_action" parent="button_menu"
+ <!-- top level menu: no parent -->
+        <menuitem id="main_loan_menu" name="Quotes Credits"/>
+        <menuitem id="loan_menu" name="Quotes Credits"
+                  parent="main_loan_menu"/>
+        <menuitem id="menu_detail_loan"
+                action="calcula" parent="loan_menu"
                 sequence="20"/>
     </data>
 </openerp>
