@@ -9,7 +9,7 @@ class loan(models.Model):
     capital = fields.Float(digits=(6, 2), help="Capital de prestec", required=True)
     interesnominal = fields.Float(digits=(6, 2), help="Interes nominal", required=True)
     numquotes = fields.Integer(string="Numero de quotes",help="numero de quotes quotes", required=True)
-    quota = fields.Float(digits=(6, 2), help="quota a pagar", required=True)
+    quota = fields.Float(digits=(6, 2), help="quota a pagar")
     @api.one
     def calcula(self):
           self.ensure_one()
